@@ -7,12 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
 
+  btnReplay: boolean = false;
+  isReplay: boolean = false;
+  btnPlay: boolean = false;
+  isPlay: boolean = true;
+
   displayError: string = '';
   isError: boolean = false;
+
   btnColor = "rgb(46, 46, 46)";
   caseValue: any;
+
   player1: string = "X";
   player2: string = "O";
+
   isPlayer1: boolean = true;
   board: any = [
     '','','',
@@ -41,55 +49,86 @@ export class BoardComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // replay(){
+  //   this.btnPlay = false;
+  //   this.isPlay = true;
+  //   this.isReplay = false;
+  //   this.squares = Array(9).fill(null);
+  // }
+  
+  onStart(){
+    this.winner = false;
+    this.btnPlay = true; 
+    this.isPlay = false;
+    this.isReplay = false;
+    this.squares = Array(9).fill(null);
+    this.board= [
+      '','','',
+      '','','',
+      '','',''
+    ] ;
+    this.isPlayer1 = true;
+   
+  }
+
   onClick(i: number){
-    this.isError = false;
-    this.caseValue = i;
-    
 
-    if(this.squares[i] == null && this.isPlayer1 ){
- 
-      this.board[this.caseValue] = this.player1;
-      this.squares[this.caseValue] = this.player1;
-      console.log(this.squares);
-      this.isPlayer1 = false;
-    } else if (this.squares[i] == null && !this.isPlayer1 ) {
-      this.board[this.caseValue] = this.player2;
-      this.squares[this.caseValue] = this.player2;
-      console.log(this.squares);
-      this.isPlayer1 = true;
-    } else {
-      this.isError = true;
-      this.displayError = '! Case deja occupée !';
-      console.log( this.isError);
+    if(this.btnPlay === true){
+      this.isError = false;
+      this.caseValue = i;
+      
+
+      if(this.squares[i] == null && this.isPlayer1 ){
+  
+        this.board[this.caseValue] = this.player1;
+        this.squares[this.caseValue] = this.player1;
+        console.log(this.squares);
+        this.isPlayer1 = false;
+
+      } else if (this.squares[i] == null && !this.isPlayer1 ) {
+
+        this.board[this.caseValue] = this.player2;
+        this.squares[this.caseValue] = this.player2;
+        console.log(this.squares);
+        this.isPlayer1 = true;
+
+      } else {
+
+        this.isError = true;
+        this.displayError = '! Case deja occupée !';
+        console.log( this.isError);
+      }
+
+      if(this.winner == false){
+
+        console.log('winner:'+this.winner);
+        this.isVictoire();
+      }
     }
 
-    if(this.winner == false){
-      console.log('winner:'+this.winner);
-      this.isVictoire();
-    }
+      
 
   }
 
   isVictoire(){
     
     for(let victorie of this.victories){
-      // console.log('valeur victorie : '+victorie);
+     
       let valeur1 = this.board[victorie[0]] ;
       let valeur2 = this.board[victorie[1]] ;
       let valeur3 = this.board[victorie[2]] ;
 
-      // console.log('valeur1:'+valeur1);
-      // console.log('valeur2:'+valeur2);
-      // console.log('valeur3:'+valeur3);
-
-
       if(valeur1 !== '' && valeur2 !== '' && valeur3 !== ''){
         if (valeur1 === valeur2 && valeur2 === valeur3){
             this.winner = true;
+            this.btnPlay = false;
+            this.isReplay = true;
+
             console.log('-----------------------gagnee-------------------------');              
         }  
       }
     }
+    
   }
 
    

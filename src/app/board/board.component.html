@@ -18,8 +18,8 @@
 </div>
 
 
-<button class="btnJouer" >jouer</button>
-
+<button class="btnJouer" *ngIf="isPlay" (click)="onStart()" >jouer</button>
+<button class="btnJouer" *ngIf="isReplay" (click)="onStart()" >Recommencer</button>
 
 
 
