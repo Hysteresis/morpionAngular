@@ -1,0 +1,22 @@
+
+ul {
+        list-style-type: none;
+        display: flex;
+        background-color: crimson;
+        margin-top: 0px;
+}
+ul li{
+        padding: 20px;
+        color: whitesmoke;
+}
+
+a{
+        color: whitesmoke;
+        text-decoration: none;
+}
+a.active{
+        text-decoration: underline overline ;
+        text-underline-offset: 0.3rem;
+        color: whitesmoke;
+        font-weight: 600;
+}

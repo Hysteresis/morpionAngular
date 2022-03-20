@@ -1,0 +1,26 @@
+<!-- titre -->
+<h1>Angular Morpion</h1>
+
+
+<hr>
+
+<p class="occupee" *ngIf="isError" >{{displayError}} </p>
+
+<!-- mise en place du game board -->
+<div class="container">       
+    <div class="game-board">
+
+        <input class="square" *ngFor="let val of squares; let i = index"
+          [value]="val" 
+          (click)="onClick(i)" >
+        
+    </div>
+</div>
+
+
+<button class="btnJouer" >jouer</button>
+
+
+
+
+<!-- ne pas effacer -->
