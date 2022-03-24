@@ -75,14 +75,15 @@ export class BoardComponent implements OnInit {
   }
 
   onClick(i: number){
-    if(this.winner === false){
+    if(this.winner === false && this.btnPlay === true){
       if(this.isPlayer1 ){
         this.displayPlayer = "Player 0 réflechis...";
       } else {
         this.displayPlayer = "Player X réflechis...";
       }
-
-}   
+    } else {
+      this.displayPlayer = "Appuyer sur le bouton Jouer";
+    }
 
 
     if(this.btnPlay === true){
@@ -139,9 +140,9 @@ export class BoardComponent implements OnInit {
             this.isReplay = true;
             
             if(this.isPlayer1){
-              this.displayPlayer = "Player X a gagné";
-            } else {
               this.displayPlayer = "Player O a gagné";
+            } else {
+              this.displayPlayer = "Player X a gagné";
             }
             console.log('-----------------------gagnee-------------------------');              
         }  
