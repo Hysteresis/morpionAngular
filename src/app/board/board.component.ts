@@ -85,10 +85,14 @@ export class BoardComponent implements OnInit {
         console.log(this.squares);
         this.isPlayer1 = false;
 
+
       } else if (this.squares[i] == null && !this.isPlayer1 ) {
 
         this.board[this.caseValue] = this.player2;
         this.squares[this.caseValue] = this.player2;
+        this.board[this.caseValue].classList.add('player2');
+
+
         console.log(this.squares);
         this.isPlayer1 = true;
 

@@ -11,6 +11,8 @@
   }
   .square:hover{
         background: crimson;
+        cursor: pointer;
+        
         
   
   }
@@ -68,5 +70,10 @@ hr{
         text-align: center;
 }
 
+
+.player2{
+
+        background-color: aqua !important;
+}
 
 
