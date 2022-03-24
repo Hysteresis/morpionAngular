@@ -3,8 +3,9 @@
 
 
 <hr>
+<p class="displayPlayer">{{displayPlayer}} <span class="occupee" *ngIf="isError">{{displayError}}</span>   </p>
 
-<p class="occupee" *ngIf="isError" >{{displayError}} </p>
+<!-- <p class="occupee" *ngIf="isError" >{{displayError}} </p> -->
 
 <!-- mise en place du game board -->
 <div class="container">       
@@ -12,6 +13,7 @@
 
         <input class="square" *ngFor="let val of squares; let i = index"
           [value]="val" 
+          [ngClass]="{player1: val === 'X', player2: val ==='O' }"        
           (click)="onClick(i)" >
         
     </div>

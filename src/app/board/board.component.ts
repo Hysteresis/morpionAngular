@@ -12,6 +12,7 @@ export class BoardComponent implements OnInit {
   btnPlay: boolean = false;
   isPlay: boolean = true;
 
+  displayPlayer: string ='';
   displayError: string = '';
   isError: boolean = false;
 
@@ -57,6 +58,8 @@ export class BoardComponent implements OnInit {
   // }
   
   onStart(){
+    this.displayPlayer = "Que la partie commence : Player X réflechis...";
+    this.isPlayer1 = true;
     this.winner = false;
     this.btnPlay = true; 
     this.isPlay = false;
@@ -72,6 +75,15 @@ export class BoardComponent implements OnInit {
   }
 
   onClick(i: number){
+    if(this.winner === false){
+      if(this.isPlayer1 ){
+        this.displayPlayer = "Player 0 réflechis...";
+      } else {
+        this.displayPlayer = "Player X réflechis...";
+      }
+
+}   
+
 
     if(this.btnPlay === true){
       this.isError = false;
@@ -90,8 +102,6 @@ export class BoardComponent implements OnInit {
 
         this.board[this.caseValue] = this.player2;
         this.squares[this.caseValue] = this.player2;
-        this.board[this.caseValue].classList.add('player2');
-
 
         console.log(this.squares);
         this.isPlayer1 = true;
@@ -127,7 +137,12 @@ export class BoardComponent implements OnInit {
             this.winner = true;
             this.btnPlay = false;
             this.isReplay = true;
-
+            
+            if(this.isPlayer1){
+              this.displayPlayer = "Player X a gagné";
+            } else {
+              this.displayPlayer = "Player O a gagné";
+            }
             console.log('-----------------------gagnee-------------------------');              
         }  
       }

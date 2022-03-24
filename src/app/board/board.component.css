@@ -10,7 +10,7 @@
         
   }
   .square:hover{
-        background: crimson;
+        background: rgb(121, 121, 121);
         cursor: pointer;
         
         
@@ -44,12 +44,21 @@
 .container {
         display: flex;
         justify-content: center;
+        align-items: center;
       }
+
+.displayPlayer{
+        background-color: #141414;
+        text-align: center;
+        padding: 3rem;
+        color : greenyellow;
+        font-size: 2rem;
+}
 
 .game-board {
         display: grid;
-        grid-template-rows: 200px 200px 200px;
-        grid-template-columns: 200px 200px 200px;
+        grid-template-rows: 160px 160px 160px;
+        grid-template-columns: 160px 160px 160px;
         grid-gap: 4px;
 }
 
@@ -66,14 +75,25 @@ hr{
 } 
 
 .occupee{
-        color:crimson;
+        width: 300px;
+        background-color: #141414;
         text-align: center;
+        padding: 3rem;
+        color : rgb(255, 47, 92);
+        font-size: 2rem;
 }
+
+
+.player1{
+
+        background-color: #0d6efd !important;
+}
+
 
 
 .player2{
 
-        background-color: aqua !important;
+        background-color: #dc3545 !important;
 }
 
 
